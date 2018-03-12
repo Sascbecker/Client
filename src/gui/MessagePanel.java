@@ -5,6 +5,7 @@ import java.util.List;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JSplitPane;
 
 import logik.Message;
 
@@ -16,22 +17,26 @@ import logik.Message;
 public class MessagePanel extends JPanel {
 	List<Message> history;
 	JScrollPane scrollpane;
+	JPanel messageHistory;
+	JPanel messageSending;
+	JSplitPane splitpane;
 	
 	
 	
 	public MessagePanel(List<Message> history) {
 		this.history = history;
-		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+		messageHistory.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		scrollpane = new JScrollPane(this);
 		for(Message message : history) {
-			this.add(new SingleMessagePanel(message));
+			messageHistory.add(new SingleMessagePanel(message));
 		}
-		
+		//TODO: complete window construction
+		splitpane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, messageHistory, messageSending);
 	}
 	public void appendNewMessagesToHistory(List<Message> newMessages) {
 		history.addAll(newMessages);
 		for(Message message : newMessages) {
-			this.add(new SingleMessagePanel(message));
+			messageHistory.add(new SingleMessagePanel(message));
 		}
 	}
 
