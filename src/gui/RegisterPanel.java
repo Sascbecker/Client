@@ -94,10 +94,10 @@ public class RegisterPanel extends JPanel {
 		});
 	}
 	
-	protected void register(String text, String valueOf) {
+	private void register(String text, String valueOf) {
 		//TODO: registrieren beim server
 		//wenn fehler bei der registration auftritt (netzwerkfehler oder sonst irgendwas)
-		throw new RuntimeException("irgendwas ist schief gelaufen");
+		//throw new RuntimeException("irgendwas ist schief gelaufen");
 		//exception werfen. keine unterscheidung nötig.
 	}
 

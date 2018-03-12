@@ -40,7 +40,28 @@ public class LoginFrame extends JFrame {
 		this.add(splitPane);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+	}
+	public boolean getLoggedIn() {
+		if(lpanel!=null) {
+			return lpanel.getLoggedIn();
+		}else {
+			return false;
+		}
+			
+	}
+	public String getUserName() {
+		if(lpanel!=null) {
+			return lpanel.getName();
+		}else {
+			return null;
+		}
+	}
+	public String getPassword() {
+		if(lpanel!=null) {
+			return lpanel.getPassword();
+		}else {
+			return null;
+		}
 	}
 
 }
