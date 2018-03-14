@@ -19,7 +19,9 @@ public class EntryPoint {
 
 	public static void main(String[] args) {
 		EntryPoint myProgram = new EntryPoint();
-		myProgram.begin();
+		
+		//myProgram.begin();
+		myProgram.offlineGuiTest();
 	}
 	
 	/**
@@ -34,8 +36,18 @@ public class EntryPoint {
 		}
 		this.name = ((LoginFrame)mainwindow).getUserName();
 		this.password = ((LoginFrame)mainwindow).getPassword();
-		mainwindow = new ChatFrame();
+		mainwindow = new ChatFrame(name);
 		
+	}
+	
+	/**
+	 * dynamic entry point to the offline test for the GUI
+	 * skips the login screen, which has been thoroughly tested at this point
+	 * and immediately constructs an example chat window, which is difficult to test offline
+	 * thus test data is generated in this method.
+	 */
+	public void offlineGuiTest() {
+		JFrame mainwindow = new ChatFrame("Testnutzer");		
 	}
 	
 	/**
