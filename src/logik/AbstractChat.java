@@ -8,9 +8,9 @@ import java.util.List;
  *
  */
 public abstract class AbstractChat {
-	private List<Message> history;
-	private int unreadMessages=0;
-	private String chatName;	
+	protected List<Message> history;
+	protected int unreadMessages;
+	protected String chatName;	
 	/**
 	 * appends any new messages to the message history of the chat
 	 * @param messages the list of new messages to append
@@ -51,5 +51,10 @@ public abstract class AbstractChat {
 	public void readMessages() {
 		unreadMessages = 0;
 	}
+	/**
+	 * if the chat is a groupchat, returns the groupID
+	 * else returns 0
+	 */
+	public abstract int getGroupID();
 	
 }

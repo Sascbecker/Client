@@ -6,6 +6,7 @@ import java.awt.LayoutManager;
 import java.util.List;
 
 import logik.AbstractChat;
+import logik.Message;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -70,6 +71,28 @@ public class ChatFrame extends JFrame {
 	public void AddChat(AbstractChat newChat) {
 		chatList.add(newChat);
 		//TODO: append chat to the visual list too
+	}
+	
+	/**
+	 * receives an incoming message and puts it in the right chat history.
+	 * @param message
+	 */
+	public void receiveMessage(Message message) {
+		if(message.getGroupId()!=0) {
+			//if group message:
+			for(AbstractChat chat : chatList) {
+				if( chat.getGroupID()==message.getGroupId()) {
+					chat.appendNewMessageToHistory(message);
+				}
+			}
+		}else {
+			//if direct message:
+			for(AbstractChat chat : chatList) {
+				if(chat.getChatName()==message.getRecipient()) {
+					chat.appendNewMessageToHistory(message);
+				}
+			}
+		}
 	}
 	
 	
