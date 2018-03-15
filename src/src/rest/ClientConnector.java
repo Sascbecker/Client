@@ -18,7 +18,7 @@ public class ClientConnector
 		
 		//theoretische uebergabeparameter: absender, empfaenger, absender-id, empfaenger-id, timestamp, ...?
 	
-	private static String baseUrl = "http://localhost:4434";
+	private static String baseUrl = "http://stl-s-stud.htwsaar.de:4434";
 	
 	public static boolean sendMessage( Message nachricht ) throws InterruptedException {
 		boolean angekommen = false;

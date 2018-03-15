@@ -15,13 +15,13 @@ public class ServerConnector
 	public static void main( String[] args ) throws IOException, InterruptedException 
 	{
 		messages = new LinkedList<String>();
-		String baseUrl = ( args.length > 0 ) ? args[0] : "http://localhost:4434";
+		String baseUrl = ( args.length > 0 ) ? args[0] : "http://stl-s-stud.htwsaar.de:4434";
 		
 		//System.out.println("Geben sie die IP des Servers ein:");
 		
 		
 		final HttpServer server = GrizzlyHttpServerFactory.createHttpServer(
-				URI.create( baseUrl ), new ResourceConfig( ClientService.class ), false );
+				URI.create( baseUrl ), new ResourceConfig( ClientService.class ));
 		Runtime.getRuntime().addShutdownHook( new Thread( new Runnable() {
 			@Override
 			public void run() {

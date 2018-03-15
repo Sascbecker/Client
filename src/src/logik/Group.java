@@ -12,6 +12,14 @@ public class Group {
 	private List<String> userList;
 	private List<Message> history;
 	
+	public Group(String admin, List<String> userList, List<Message> history) {
+		this.admin=admin;
+		this.userList=userList;
+		this.history=history;
+	}
+	
+	
+	
 	public List<String> getUserList(){
 		return userList;
 	}

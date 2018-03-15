@@ -29,5 +29,11 @@ public class GroupChat extends AbstractChat {
 	public int getGroupID() {
 		return groupID;
 	}
+	public List<String> getUsers(){
+		return users;
+	}
+	public String getAdmin() {
+		return admin;
+	}
 
 }

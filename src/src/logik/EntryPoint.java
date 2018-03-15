@@ -1,6 +1,9 @@
 package logik;
 
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 import javax.swing.JFrame;
 
@@ -56,6 +59,47 @@ public class EntryPoint {
 		((ChatFrame) mainwindow).AddChat(new ContactChat("welt"));
 		System.out.println("we added two chats");
 		System.out.println(((ChatFrame) mainwindow).getChatList());
+		testMSG("hallo", "wie geht's denn so", 0, ((ChatFrame) mainwindow));
+		testMSG("hallo", "kjdsafljdsaöljf", 0, ((ChatFrame) mainwindow));
+		testMSG("hallo", "hallohasdkjsaj", 0, ((ChatFrame) mainwindow));
+		testMSG("hallo", "AAAAAAAAAAAA", 0, ((ChatFrame) mainwindow));
+		testMSG("hallo", "bummbumm", 0, ((ChatFrame) mainwindow));
+		testMSG("welt", "aaaa", 0, ((ChatFrame) mainwindow));
+		testMSG("hallo", "texttexttext", 0, ((ChatFrame) mainwindow));
+		testMSG("hallo", "uiuiuiuiuiuiuiuiu", 0, ((ChatFrame) mainwindow));
+		testMSG("hallo", "pups", 0, ((ChatFrame) mainwindow));
+		testMSG("hallo", "bumm", 0, ((ChatFrame) mainwindow));
+		testMSG("welt", "ich will nicht mehr", 0, ((ChatFrame) mainwindow));
+		testMSG("welt", "alles ist kaputt", 0, ((ChatFrame) mainwindow));
+		
+		List<String> userlist = new ArrayList<String>();
+		userlist.add("Hallo");
+		userlist.add("Welt");
+		userlist.add("Testnutzer");
+		userlist.add("Mond");
+		userlist.add("DAU");
+		userlist.add("Ein Schwein");
+
+		((ChatFrame)mainwindow).AddChat(new GroupChat(777, "arschloch gruppe", "Testnutzer", userlist));
+		
+		testMSG("hallo", "alfdsajkt kaputt", 777, ((ChatFrame) mainwindow));
+		testMSG("welt", "fölkdsjaöflkst kaputt", 777, ((ChatFrame) mainwindow));
+		testMSG("Ein Schwein", "vomit coffin", 777, ((ChatFrame) mainwindow));
+		testMSG("Mond", "alles", 777, ((ChatFrame) mainwindow));
+		testMSG("DAU", "kaputt", 777, ((ChatFrame) mainwindow));
+		testMSG("Testnutzer", "ALLES IST KAPUTT", 777, ((ChatFrame) mainwindow));
+
+		
+	}
+	private void testMSG(String sender, String msg, int groupID, ChatFrame window) {
+		Random rng = new Random();
+		window.receiveMessage(new Message(
+				sender, 
+				groupID, 
+				"Testnutzer", 
+				msg, 
+				System.currentTimeMillis()-rng.nextInt(100_000)
+				));
 	}
 	
 	/**
