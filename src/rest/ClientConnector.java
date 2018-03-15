@@ -79,16 +79,4 @@ public class ClientConnector
 		return angekommen;
 		//;to be continued
 	}
-	
-	public static boolean sendLastMessageTimestamp( long timestamp, String sender ) {
-		String webContextPath = "/lastTimestamp";
-		
-		Client c = ClientBuilder.newClient();
-		WebTarget target = c.target( baseUrl );
-		
-		boolean angekommen = target.path( webContextPath ).queryParam( "timestamp", timestamp ).queryParam( "sender", sender )
-				.request( MediaType.APPLICATION_JSON ).get(boolean.class);
-		
-		return angekommen;
-	}
 }
