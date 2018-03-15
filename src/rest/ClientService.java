@@ -2,11 +2,11 @@ package rest;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import javax.json.Json;
-import javax.json.JsonObjectBuilder;
+//import javax.json.Json;
+//import javax.json.JsonObjectBuilder;
 
-import clientConnector.Singleton;
-import clientConnector.ClientConnector;
+//import rest.ClientConnector;
+import dataclass.*;
 
 @Path( "/{parameter: kontakt|getMessage}" )
 public class ClientService
