@@ -16,7 +16,10 @@ public class ServerConnector
 	{
 		messages = new LinkedList<String>();
 		String baseUrl = ( args.length > 0 ) ? args[0] : "http://localhost:4434";
-
+		
+		//System.out.println("Geben sie die IP des Servers ein:");
+		
+		
 		final HttpServer server = GrizzlyHttpServerFactory.createHttpServer(
 				URI.create( baseUrl ), new ResourceConfig( ClientService.class ), false );
 		Runtime.getRuntime().addShutdownHook( new Thread( new Runnable() {
