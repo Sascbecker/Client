@@ -39,15 +39,17 @@ public class ClientConnector
 		return angekommen;
 	}
 	
-	public static void login( String name, String password ) {
+	public static boolean login( String name, String password ) {
 		//String baseUrl = "http://localhost:4434";
 		String webContextPath = "/login";
 		
 		Client c = ClientBuilder.newClient();
 		WebTarget target = c.target( baseUrl );
 		
+		InetAddress ip = null;
+		
 		try {
-			InetAddress ip = InetAddress.getLocalHost();
+			ip = InetAddress.getLocalHost();
 			System.out.println(ip);
 			System.out.println(ip.getHostAddress());
 		} catch (UnknownHostException e) {
@@ -56,9 +58,9 @@ public class ClientConnector
 		
 		boolean angekommen = target.path( webContextPath )
 				.queryParam( "name", name ).queryParam("password", password).queryParam( "ip", ip )
-				.request( MediaType.APPLICATION_JSON );
+				.request( MediaType.APPLICATION_JSON ).get(boolean.class);
 		
-		
+		return true;
 		//;to be continued
 	}
 }
