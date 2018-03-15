@@ -7,6 +7,8 @@ package rest;
 import javax.ws.rs.client.*;
 import javax.ws.rs.core.MediaType;
 
+import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;
+
 //import java.io.StringReader;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -18,14 +20,15 @@ public class ClientConnector
 		
 		//theoretische uebergabeparameter: absender, empfaenger, absender-id, empfaenger-id, timestamp, ...?
 	
-	private static String baseUrl = "http://stl-s-stud.htwsaar.de:4434";
+	private static String baseUrl = "10.9.40.161";
 	
 	public static boolean sendMessage( Message nachricht ) throws InterruptedException {
 		boolean angekommen = false;
 		
 		String webContextPath = "/getMessage";
 		
-		Client c = ClientBuilder.newClient();
+		//Client c = ClientBuilder.newClient();
+		Client c = new ResteasyClientBuilder().build();
 		WebTarget target = c.target( baseUrl );
 		
 		angekommen = target.path( webContextPath )
@@ -48,7 +51,7 @@ public class ClientConnector
 		WebTarget target = c.target( baseUrl );
 		
 		InetAddress ip = null;
-		
+	 /*
 		try {
 			ip = InetAddress.getLocalHost();
 			System.out.println(ip);
@@ -56,7 +59,7 @@ public class ClientConnector
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		}
-		
+		*/
 		boolean angekommen = target.path( webContextPath )
 				.queryParam( "user", user ).queryParam( "ip", ip )
 				.request( MediaType.APPLICATION_JSON ).get(boolean.class);

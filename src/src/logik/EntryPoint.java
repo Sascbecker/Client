@@ -1,6 +1,7 @@
 package logik;
 
 import java.awt.event.WindowEvent;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -9,6 +10,7 @@ import javax.swing.JFrame;
 
 import gui.ChatFrame;
 import gui.LoginFrame;
+import rest.ServerConnector;
 
 /**
  * entry point for the whole client program
@@ -22,9 +24,11 @@ public class EntryPoint {
 
 	public static void main(String[] args) {
 		EntryPoint myProgram = new EntryPoint();
-		
-		//myProgram.begin();
-		myProgram.offlineGuiTest();
+		try {
+			ServerConnector.main(null);
+		} catch (Throwable t) {}
+		myProgram.begin();
+		//myProgram.offlineGuiTest();
 	}
 	
 	/**

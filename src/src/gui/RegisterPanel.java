@@ -11,6 +11,9 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import dataclass.User;
+import rest.ClientConnector;
+
 public class RegisterPanel extends JPanel {
 	private JTextField usernameField;
 	private JPasswordField passwordField;
@@ -94,11 +97,11 @@ public class RegisterPanel extends JPanel {
 		});
 	}
 	
-	private void register(String text, String valueOf) {
-		//TODO: registrieren beim server
-		//wenn fehler bei der registration auftritt (netzwerkfehler oder sonst irgendwas)
-		//throw new RuntimeException("irgendwas ist schief gelaufen");
-		//exception werfen. keine unterscheidung nötig.
+	private void register(String name, String password) {
+		User user = new User(1, name, password);
+		if(!ClientConnector.login(user)) {
+			throw new RuntimeException("huiuiui");
+		}
 	}
 
 	private boolean passwordEmpty() {

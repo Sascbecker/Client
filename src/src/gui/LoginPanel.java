@@ -11,6 +11,9 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import dataclass.User;
+import rest.ClientConnector;
+
 public class LoginPanel extends JPanel {
 	
 	private JTextField usernameField;
@@ -106,11 +109,11 @@ public class LoginPanel extends JPanel {
 		return password;
 	}
 
-	private void login(String text, String valueOf) {
-		//TODO: login beim server
-		//wenn fehler beim login auftritt (netzwerkfehler oder sonst irgendwas)
-		//throw new RuntimeException("irgendwas ist schief gelaufen");
-		//exception werfen. keine unterscheidung nötig.
+	private void login(String name, String password) {
+		User user = new User(2, name, password);
+		if(!ClientConnector.login(user)) {
+			throw new RuntimeException("huiuiui");
+		}
 	}
 
 	private boolean passwordEmpty() {
