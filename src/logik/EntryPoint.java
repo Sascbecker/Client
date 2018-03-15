@@ -38,6 +38,8 @@ public class EntryPoint {
 		this.password = ((LoginFrame)mainwindow).getPassword();
 		mainwindow = new ChatFrame(name);
 		
+
+		
 	}
 	
 	/**
@@ -47,7 +49,13 @@ public class EntryPoint {
 	 * thus test data is generated in this method.
 	 */
 	public void offlineGuiTest() {
-		JFrame mainwindow = new ChatFrame("Testnutzer");		
+		JFrame mainwindow = new ChatFrame("Testnutzer");
+		System.out.println("window created");
+
+		((ChatFrame) mainwindow).AddChat(new ContactChat("hallo"));
+		((ChatFrame) mainwindow).AddChat(new ContactChat("welt"));
+		System.out.println("we added two chats");
+		System.out.println(((ChatFrame) mainwindow).getChatList());
 	}
 	
 	/**
