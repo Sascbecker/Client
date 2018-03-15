@@ -8,7 +8,7 @@ import javax.ws.rs.core.MediaType;
 //import rest.ClientConnector;
 import dataclass.*;
 
-@Path( "/{parameter: kontakt|getMessage}" )
+@Path( "/{parameter: getMessage|ping|kontakte}" )
 public class ClientService
 {
 	
@@ -38,14 +38,5 @@ public class ClientService
 		//kontakte weitergeben
 		
 		return true;
-	}
-	
-	@Path("/lastMessage")
-	@GET
-	@Produces( MediaType.APPLICATION_JSON )
-	public void kontakte() {
-		
-		
-		//sendlastmessagetimestamp
 	}
 }
