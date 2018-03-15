@@ -39,4 +39,13 @@ public class ClientService
 		
 		return true;
 	}
+	
+	@Path("/lastMessage")
+	@GET
+	@Produces( MediaType.APPLICATION_JSON )
+	public void kontakte() {
+		
+		
+		//sendlastmessagetimestamp
+	}
 }

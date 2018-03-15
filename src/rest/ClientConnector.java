@@ -10,6 +10,7 @@ import javax.ws.rs.core.MediaType;
 import java.io.StringReader;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import dataclass.*;
 //import java.util.*;
 
 public class ClientConnector
@@ -19,7 +20,7 @@ public class ClientConnector
 	
 	private static String baseUrl = "http://localhost:4434";
 	
-	public static boolean sendMessage( String absender, String empfaenger, int gruppenID, int timestamp, String message, int aktion ) throws InterruptedException {
+	public static boolean sendMessage( Message nachricht ) throws InterruptedException {
 		boolean angekommen = false;
 		
 		String webContextPath = "/getMessage";
@@ -28,18 +29,18 @@ public class ClientConnector
 		WebTarget target = c.target( baseUrl );
 		
 		angekommen = target.path( webContextPath )
-					.queryParam( "absender", absender )
-					.queryParam( "empfaenger", empfaenger )
-					.queryParam( "gruppenID", gruppenID )
-					.queryParam( "timestamp", timestamp )
-					.queryParam( "message", message )
-					.queryParam( "aktion", aktion )
+					.queryParam( "nachricht", nachricht )
+					//.queryParam( "empfaenger", empfaenger )
+					//.queryParam( "gruppenID", gruppenID )
+					//.queryParam( "timestamp", timestamp )
+					//.queryParam( "message", message )
+					//.queryParam( "aktion", aktion )
 					.request(MediaType.APPLICATION_JSON).get(boolean.class);
 		
 		return angekommen;
 	}
 	
-	public static boolean login( String name, String password ) {
+	public static boolean login( User user ) {
 		//String baseUrl = "http://localhost:4434";
 		String webContextPath = "/login";
 		
@@ -57,10 +58,37 @@ public class ClientConnector
 		}
 		
 		boolean angekommen = target.path( webContextPath )
-				.queryParam( "name", name ).queryParam("password", password).queryParam( "ip", ip )
+				.queryParam( "user", user ).queryParam( "ip", ip )
 				.request( MediaType.APPLICATION_JSON ).get(boolean.class);
 		
-		return true;
+		return angekommen;
 		//;to be continued
+	}
+	
+	public static boolean sendGroup( Group gruppe ) {
+		String webContextPath = "/getGroup";
+		
+		Client c = ClientBuilder.newClient();
+		WebTarget target = c.target( baseUrl );
+		
+		//Group gruppe = new Group(aktion, sender, name);
+		
+		boolean angekommen = target.path( webContextPath ).queryParam( "gruppe", gruppe )
+				.request( MediaType.APPLICATION_JSON ).get(boolean.class);
+		
+		return angekommen;
+		//;to be continued
+	}
+	
+	public static boolean sendLastMessageTimestamp( long timestamp, String sender ) {
+		String webContextPath = "/lastTimestamp";
+		
+		Client c = ClientBuilder.newClient();
+		WebTarget target = c.target( baseUrl );
+		
+		boolean angekommen = target.path( webContextPath ).queryParam( "timestamp", timestamp ).queryParam( "sender", sender )
+				.request( MediaType.APPLICATION_JSON ).get(boolean.class);
+		
+		return angekommen;
 	}
 }
