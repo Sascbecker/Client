@@ -16,10 +16,27 @@ public class ClientService
 	@GET
 	@Produces( MediaType.APPLICATION_JSON )
 	public boolean getMessage( @QueryParam("absender") String absender, @QueryParam("empfaenger") String empfaenger,
-							@QueryParam("gruppenID") int gruppenID, @QueryParam("timestamp") int timestamp, 
+							@QueryParam("gruppenID") int gruppenID, @QueryParam("timestamp") long timestamp, 
 							@QueryParam("message") String message, @QueryParam("aktion") int aktion ) {
 		//ClientConnector.getMessage( absender );
 		
 		return true;//Nachricht angekommen
+	}
+	
+	@Path("/ping")
+	@GET
+	@Produces( MediaType.APPLICATION_JSON )
+	public boolean ping() {
+		return true;
+	}
+	
+	@Path("/kontakte")
+	@GET
+	@Produces( MediaType.APPLICATION_JSON )
+	public boolean kontakte( @QueryParam ( "kontakte") Kontakte kontakte ) {
+		
+		//kontakte weitergeben
+		
+		return true;
 	}
 }
