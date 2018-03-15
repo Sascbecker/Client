@@ -1,13 +1,13 @@
 package rest;
 
 
-import javax.json.*;
-import javax.json.JsonObject;
+//import javax.json.*;
+//import javax.json.JsonObject;
 
 import javax.ws.rs.client.*;
 import javax.ws.rs.core.MediaType;
 
-import java.io.StringReader;
+//import java.io.StringReader;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import dataclass.*;

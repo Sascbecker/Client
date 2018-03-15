@@ -2,13 +2,13 @@ package rest;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import javax.json.Json;
-import javax.json.JsonObjectBuilder;
+//import javax.json.Json;
+//import javax.json.JsonObjectBuilder;
 
-import clientConnector.Singleton;
-import clientConnector.ClientConnector;
+//import rest.ClientConnector;
+import dataclass.*;
 
-@Path( "/{parameter: kontakt|getMessage}" )
+@Path( "/{parameter: getMessage|ping|kontakte}" )
 public class ClientService
 {
 	
@@ -38,14 +38,5 @@ public class ClientService
 		//kontakte weitergeben
 		
 		return true;
-	}
-	
-	@Path("/lastMessage")
-	@GET
-	@Produces( MediaType.APPLICATION_JSON )
-	public void kontakte() {
-		
-		
-		//sendlastmessagetimestamp
 	}
 }
